@@ -6,7 +6,7 @@ authors: [ "Peter Zotov <whitequark@whitequark.org>" ]
 license: "MIT"
 homepage: "https://github.com/whitequark/ppx_include"
 bug-reports: "https://github.com/whitequark/ppx_include/issues"
-dev-repo: "git://github.com/whitequark/ppx_include.git"
+dev-repo: "git://github.com/whitequark/ppx_include"
 tags: [ "syntax" ]
 substs: [ "pkg/META" ]
 build: [
