@@ -3,6 +3,8 @@
 
 _include_ is a syntax extension that allows to include an OCaml source file inside another one.
 
+_include_ requires OCaml 4.02 or later.
+
 Installation
 ------------
 
