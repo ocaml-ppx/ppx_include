@@ -1,0 +1,3 @@
+version = "%{version}%"
+description = "Include OCaml source files in each other"
+ppx = "./ppx_include"
