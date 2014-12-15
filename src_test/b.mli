@@ -1,2 +1,1 @@
-val y : int
-val t : int
+type t = A.t option

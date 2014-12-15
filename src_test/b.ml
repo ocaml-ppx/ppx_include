@@ -1,2 +1,1 @@
-let y = A.x
-let t = A.z
+type t = A.t option

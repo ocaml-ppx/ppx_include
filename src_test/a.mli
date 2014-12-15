@@ -1,2 +1,1 @@
-val x : int
-val z : int
+type t = B.t option

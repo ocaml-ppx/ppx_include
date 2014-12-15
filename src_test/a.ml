@@ -1,2 +1,1 @@
-let x = 1
-let z = B.y
+type t = B.t option
