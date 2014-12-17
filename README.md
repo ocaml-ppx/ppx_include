@@ -61,4 +61,4 @@ let () = dispatch (
 License
 -------
 
-_import_ is distributed under the terms of [MIT license](LICENSE.txt).
+_include_ is distributed under the terms of [MIT license](LICENSE.txt).
