@@ -1,3 +1,7 @@
+#if OCAML_VERSION < (4, 03, 0)
+#define Pconst_string Const_string
+#endif
+
 open Longident
 open Asttypes
 open Parsetree
@@ -12,7 +16,7 @@ let raise_errorf ?sub ?if_highlight ?loc message =
 let filename_of_payload ~loc payload =
   match payload with
   | PStr [{ pstr_desc = Pstr_eval (
-      { pexp_desc = Pexp_constant (Const_string (file, None)) }, _) }] ->
+      { pexp_desc = Pexp_constant (Pconst_string (file, None)) }, _) }] ->
     file
   | _ ->
     raise_errorf ~loc "[%%include]: invalid syntax"

@@ -1,7 +1,8 @@
 open Ocamlbuild_plugin
 
-let () = dispatch (
-  function
+let () = dispatch (fun phase ->
+  Ocamlbuild_cppo.dispatcher phase;
+  match phase with
   | After_rules ->
     flag ["ocaml"; "ocamldep"; "use_include"] & S[A"-ppx"; A"src/ppx_include.native"];
     flag ["ocaml"; "compile";  "use_include"] & S[A"-ppx"; A"src/ppx_include.native"];
