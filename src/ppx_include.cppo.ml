@@ -2,6 +2,12 @@
 #define Pconst_string Const_string
 #endif
 
+#if OCAML_VERSION >= (4, 08, 0)
+#define Get_load_path Load_path.get_paths ()
+#else
+#define Get_load_path !Config.load_path
+#endif
+
 open Longident
 open Asttypes
 open Parsetree
@@ -10,7 +16,11 @@ open Ast_helper
 
 let raise_errorf ?sub ?if_highlight ?loc message =
   message |> Printf.kprintf (fun str ->
+#if OCAML_VERSION >= (4, 08, 0)
+    let err = Location.error ?sub ?loc str in
+#else
     let err = Location.error ?sub ?if_highlight ?loc str in
+#endif
     raise (Location.Error err))
 
 let filename_of_payload ~loc payload =
@@ -24,7 +34,7 @@ let filename_of_payload ~loc payload =
 let lexbuf_of_payload ~loc payload =
   let filename = filename_of_payload ~loc payload in
   let load_paths =
-    (Filename.dirname loc.Location.loc_start.Lexing.pos_fname :: !Config.load_path) |>
+    (Filename.dirname loc.Location.loc_start.Lexing.pos_fname :: Get_load_path) |>
     List.map (fun dir -> Filename.concat dir filename)
   in
   try
